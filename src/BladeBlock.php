@@ -132,6 +132,6 @@ abstract class BladeBlock extends Composer implements BlockContract
             'classes' => $this->attributes->className ?? false,
         ])->filter()->implode(' ');
 
-        return $this->view($this->view, ['block' => $this]);
+        return $this->view($this->view, ['block' => $this, 'content' => $this->content]);
     }
 }
