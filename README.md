@@ -139,7 +139,7 @@ provides Blade support for blocks, but utilises ACF's Blocks instead, which will
 ### Modifying your Block
 
 Your Block has a few options available to it to modify. Add these as member variables to your
-generated block class to defined and use them.
+generated block class to define and use them.
 
 Your block's class will default to `"wp-block-$prefix-$slug"`, where the prefix has the trailing slash trimmed.
 This block class is available in the view as `$blockClass` for easy use with BEM class naming.
