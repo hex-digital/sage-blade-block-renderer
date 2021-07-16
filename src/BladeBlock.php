@@ -87,7 +87,7 @@ abstract class BladeBlock extends Composer implements BlockContract
         }
 
         $this->register(function () {
-            register_block_type(Str::start($this->prefix, $this->slug), [
+            register_block_type(Str::start($this->slug, $this->prefix), [
                 'render_callback' => function ($block, $content = '', $preview = false, $post_id = 0) {
                     echo $this->render($block, $content, $preview, $post_id);
                 },
