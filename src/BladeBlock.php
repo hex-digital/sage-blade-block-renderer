@@ -117,6 +117,8 @@ abstract class BladeBlock extends Composer implements BlockContract
 
         $trimmedPrefix = rtrim($this->prefix, '/');
 
+        $blockClass = Str::start(Str::slug($this->slug), 'wp-block-' . $trimmedPrefix . '-');
+
         $this->classes = collect([
             'slug' => Str::start(
                 Str::slug($this->slug),
@@ -134,6 +136,6 @@ abstract class BladeBlock extends Composer implements BlockContract
             'classes' => $this->attributes->className ?? false,
         ])->filter()->implode(' ');
 
-        return $this->view($this->view, ['block' => $this, 'content' => $this->content]);
+        return $this->view($this->view, ['block' => $this, 'blockClass' => $blockClass, 'content' => $this->content]);
     }
 }
