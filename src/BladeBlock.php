@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use BladeBlock\Contracts\BladeBlock as BlockContract;
 use BladeBlock\Concerns\InteractsWithBlade;
 
-abstract class BladeBladeBlock extends Composer implements BlockContract
+abstract class BladeBlock extends Composer implements BlockContract
 {
     use InteractsWithBlade;
 

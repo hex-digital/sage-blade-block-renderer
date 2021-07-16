@@ -16,6 +16,13 @@ class MakeCommand extends GeneratorCommand
     protected $view = false;
 
     /**
+     * The view partial directory used when generated.
+     *
+     * @var string|bool
+     */
+    protected $viewDirectory = false;
+
+    /**
      * The generated class path.
      *
      * @var string
@@ -116,7 +123,7 @@ class MakeCommand extends GeneratorCommand
      */
     public function getViewPath()
     {
-        return $this->getPaths() . '/' . Str::slug(Str::plural($this->type)) . '/';
+        return $this->getPaths() . '/' . Str::slug($this->viewDirectory) . '/';
     }
 
     /**

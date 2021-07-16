@@ -29,6 +29,13 @@ class BlockMakeCommand extends MakeCommand
     protected $type = 'BladeBlock';
 
     /**
+     * The view partial directory used when generated.
+     *
+     * @var string|bool
+     */
+    protected $viewDirectory = 'blocks';
+
+    /**
      * The view stub used when generated.
      *
      * @var string|bool
