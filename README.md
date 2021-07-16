@@ -74,11 +74,11 @@ use BladeBlock\BladeBlock;
 class Example extends BladeBlock
 {
     /**
-     * The block name.
+     * The block slug. Should match the slug given to your registered block.
      *
      * @var string
      */
-    public $name = 'Example';
+    public $slug = 'example';
 
     /**
      * Data to be passed to the block before rendering.
