@@ -5,12 +5,11 @@ namespace BladeBlock;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use BladeBlock\Contracts\BladeBlock as BlockContract;
-use BladeBlock\Concerns\InteractsWithBlade;
+
+use function Roots\view;
 
 abstract class BladeBlock extends Composer implements BlockContract
 {
-    use InteractsWithBlade;
-
     /**
      * The block attributes.
      *
@@ -40,28 +39,22 @@ abstract class BladeBlock extends Composer implements BlockContract
     public $classes;
 
     /**
-     * The block prefix.
+     * The block prefix. Should match the prefix given to your block
      *
      * @var string
      */
     public $prefix = 'hex/';
 
     /**
-     * The block name.
-     *
-     * @var string
-     */
-    public $name = '';
-
-    /**
-     * The block slug.
+     * The block slug. Should match the slug given to your registered block.
      *
      * @var string
      */
     public $slug = '';
 
     /**
-     * The block view.
+     * The block view. Same format as given to the blade `include()` function. A dot-separated path where the root is `resources/views`.
+     * If left blank, defaults to `'blocks.' . $this->slug`.
      *
      * @var string
      */
@@ -74,12 +67,8 @@ abstract class BladeBlock extends Composer implements BlockContract
      */
     public function compose()
     {
-        if (empty($this->name)) {
-            return;
-        }
-
         if (empty($this->slug)) {
-            $this->slug = Str::slug(Str::kebab($this->name));
+            return;
         }
 
         if (empty($this->view)) {
@@ -136,6 +125,10 @@ abstract class BladeBlock extends Composer implements BlockContract
             'classes' => $this->attributes->className ?? false,
         ])->filter()->implode(' ');
 
-        return $this->view($this->view, ['block' => $this, 'blockClass' => $blockClass, 'content' => $this->content]);
+        return view(
+            $this->view,
+            ['block' => $this, 'blockClass' => $blockClass, 'content' => $this->content],
+            $this->with($this)
+        )->render();
     }
 }

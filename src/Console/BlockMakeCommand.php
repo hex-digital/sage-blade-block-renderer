@@ -11,7 +11,7 @@ class BlockMakeCommand extends MakeCommand
      *
      * @var string
      */
-    protected $signature = 'blade-block:block {name* : The name of the block}
+    protected $signature = 'blade-block {name* : The name of the block}
                             {--force : Overwrite any existing files}';
 
     /**

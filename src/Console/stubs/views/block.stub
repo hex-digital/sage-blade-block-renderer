@@ -2,10 +2,10 @@
   @if ($data)
     <p>{!! $data !!}
   @else
-    <p>{{ $block->preview ? 'Add data...' : 'No data found!' }}</p>
+    <p>No data found!</p>
   @endif
 
-  <div>
-    <InnerBlocks />
-  </div>
+  @if ($content)
+    {!! $content !!}
+  @endif
 </div>
