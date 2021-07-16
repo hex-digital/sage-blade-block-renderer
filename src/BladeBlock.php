@@ -53,7 +53,8 @@ abstract class BladeBlock extends Composer implements BlockContract
     public $slug = '';
 
     /**
-     * The block view. Same format as given to the blade `include()` function. A dot-separated path where the root is `resources/views`.
+     * The block view. Same format as given to the blade `include()` function.
+     * A dot-separated path where the root is `resources/views`.
      * If left blank, defaults to `'blocks.' . $this->slug`.
      *
      * @var string
