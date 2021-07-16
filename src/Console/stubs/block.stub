@@ -16,7 +16,7 @@ class DummyClass extends BladeBlock
     /**
      * Data to be passed to the block before rendering.
      *
-     * @param  array $block
+     * @param BladeBlock $block
      * @return array
      */
     public function with($block)

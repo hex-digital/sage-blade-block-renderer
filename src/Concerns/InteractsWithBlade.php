@@ -30,6 +30,6 @@ trait InteractsWithBlade
             $view = view()->exists($preview) ? $preview : $view;
         }
 
-        return view($view, $with, $this->with($with))->render();
+        return view($view, $with, $this->with($with['block']))->render();
     }
 }

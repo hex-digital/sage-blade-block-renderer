@@ -7,7 +7,7 @@ interface BladeBlock
     /**
      * Data to be passed to the rendered block view.
      *
-     * @param array $block
+     * @param BladeBlock $block
      * @return array
      */
     public function with($block);
