@@ -1,0 +1,35 @@
+{
+  "name": "hex-digital/sage-blade-block-renderer",
+  "type": "package",
+  "description": "Generate blade partials to render native gutenberg blocks with Sage 10",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jamie Warburton",
+      "email": "jamie@hexdigital.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "BladeBlock\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^7.3|^8.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.5"
+  },
+  "extra": {
+    "acorn": {
+      "providers": [
+        "BladeBlock\\Providers\\BladeBlockRendererServiceProvider"
+      ]
+    }
+  },
+  "scripts": {
+    "lint": [
+      "phpcs --ignore=vendor --extensions=php --standard=PSR12 ."
+    ]
+  }
+}

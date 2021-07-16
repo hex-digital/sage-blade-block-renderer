@@ -1,0 +1,27 @@
+<?php
+
+namespace DummyNamespace;
+
+use BladeBlock\Block;
+
+class DummyClass extends Block
+{
+    /**
+     * The block name.
+     *
+     * @var string
+     */
+    public $name = 'DummyTitle';
+
+    /**
+     * Data to be passed to the block before rendering.
+     *
+     * @return array
+     */
+    public function with()
+    {
+        return [
+            'data' => 'dummy data',
+        ];
+    }
+}

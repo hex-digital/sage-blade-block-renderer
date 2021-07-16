@@ -1,0 +1,11 @@
+<div class="{{ $block->classes }}">
+  @if ($data)
+    <p>{!! $data !!}
+  @else
+    <p>{{ $block->preview ? 'Add data...' : 'No data found!' }}</p>
+  @endif
+
+  <div>
+    <InnerBlocks />
+  </div>
+</div>
