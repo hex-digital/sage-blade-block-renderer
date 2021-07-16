@@ -2,9 +2,9 @@
 
 namespace DummyNamespace;
 
-use BladeBlock\Block;
+use BladeBlock\BladeBlock;
 
-class DummyClass extends Block
+class DummyClass extends BladeBlock
 {
     /**
      * The block name.

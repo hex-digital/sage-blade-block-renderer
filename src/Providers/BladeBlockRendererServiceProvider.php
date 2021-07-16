@@ -29,10 +29,6 @@ class BladeBlockRendererServiceProvider extends ServiceProvider
     {
         $this->app->make('BladeBlockRenderer');
 
-        $this->publishes([
-            __DIR__ . '/../../config/blade-block.php' => $this->app->configPath('blade-block.php'),
-        ], 'config');
-
         $this->commands([
             BlockMakeCommand::class,
         ]);
