@@ -115,10 +115,12 @@ abstract class BladeBlock extends Composer implements BlockContract
         $this->post = get_post($post_id);
         $this->post_id = $post_id;
 
+        $trimmedPrefix = rtrim($this->prefix, '/');
+
         $this->classes = collect([
             'slug' => Str::start(
                 Str::slug($this->slug),
-                'wp-block-' . $this->prefix . '-'
+                'wp-block-' . $trimmedPrefix . '-'
             ),
             'align' => ! empty($this->attributes->align) ?
                 Str::start($this->attributes->align, 'align') :
