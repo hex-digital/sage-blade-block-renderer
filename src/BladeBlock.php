@@ -12,11 +12,11 @@ abstract class BladeBlock extends Composer implements BlockContract
     use InteractsWithBlade;
 
     /**
-     * The block properties.
+     * The block attributes.
      *
      * @var array|object
      */
-    public $block;
+    public $attributes;
 
     /**
      * The block content.
@@ -88,8 +88,8 @@ abstract class BladeBlock extends Composer implements BlockContract
 
         $this->register(function () {
             register_block_type(Str::start($this->slug, $this->prefix), [
-                'render_callback' => function ($block, $content = '', $preview = false, $post_id = 0) {
-                    echo $this->render($block, $content, $preview, $post_id);
+                'render_callback' => function ($attributes, $content = '', $preview = false, $post_id = 0) {
+                    echo $this->render($attributes, $content, $preview, $post_id);
                 },
             ]);
         });
@@ -100,15 +100,15 @@ abstract class BladeBlock extends Composer implements BlockContract
     /**
      * Render the Blade block.
      *
-     * @param  array $block
+     * @param  array $attributes
      * @param  string $content
      * @param  bool $preview
      * @param  int $post_id
      * @return string
      */
-    public function render($block, $content = '', $preview = false, $post_id = 0)
+    public function render($attributes, $content = '', $preview = false, $post_id = 0)
     {
-        $this->block = (object) $block;
+        $this->attributes = (object) $attributes;
         $this->content = $content;
         $this->preview = $preview;
 
@@ -120,16 +120,16 @@ abstract class BladeBlock extends Composer implements BlockContract
                 Str::slug($this->slug),
                 'wp-block-'
             ),
-            'align' => ! empty($this->block->align) ?
-                Str::start($this->block->align, 'align') :
+            'align' => ! empty($this->attributes->align) ?
+                Str::start($this->attributes->align, 'align') :
                 false,
             'align_text' => ! empty($this->supports['align_text']) ?
-                Str::start($this->block->align_text, 'align-text-') :
+                Str::start($this->attributes->align_text, 'align-text-') :
                 false,
             'align_content' => ! empty($this->supports['align_content']) ?
-                Str::start($this->block->align_content, 'is-position-') :
+                Str::start($this->attributes->align_content, 'is-position-') :
                 false,
-            'classes' => $this->block->className ?? false,
+            'classes' => $this->attributes->className ?? false,
         ])->filter()->implode(' ');
 
         return $this->view($this->view, ['block' => $this]);
