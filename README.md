@@ -119,8 +119,10 @@ A `View` is also generated in the `resources/views/blocks` directory:
 </div>
 ```
 
-The `$content` variable will contain the HTML for any InnerBlocks added in the editor.
-This can then be outputted as required into the blade partial.
+The `$content` variable will contain the HTML for any InnerBlocks added in the editor.  
+The `$blockClass` variable will contain the base class for the block, for use with BEM class naming.  
+This is in the form `"wp-block-$namespace-$blockName"` E.G. `wp-block-hex-page-header`.  
+These can then be outputted as required into the blade partial.
 
 All block data is available on the `$block` object, which is the same as that passed to the
 BladeBlock `with()` function. All data returned from the `with()` function is also available.
